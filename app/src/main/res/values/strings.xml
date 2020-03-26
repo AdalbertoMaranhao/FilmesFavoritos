@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Filmes Favoritos</string>
+    <string name="message_loading">Carregando…</string>
+    <string name="error_loading">Erro ao carregar a lista</string>
+    <string name="tab_favorites">Favoritos</string>
+    <string name="tab_movies">Filmes</string>
+    <string name="search_hint">Buscar por filme...</string>
+</resources>
