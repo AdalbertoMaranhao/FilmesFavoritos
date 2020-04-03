@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.*
 import com.example.filmesfavoritos.R
 import com.example.filmesfavoritos.model.Movie
@@ -12,13 +14,14 @@ import com.example.filmesfavoritos.repository.MovieRepository
 import com.example.filmesfavoritos.ui.viewmodel.MovieDetailViewModel
 import com.example.filmesfavoritos.ui.viewmodel.MovieFavoritesViewModel
 import com.example.filmesfavoritos.ui.viewmodel.MovieVmFactory
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MovieDetailActivity : AppCompatActivity() {
+class MovieDetailActivity : BaseActivity() {
     val viewModel: MovieDetailViewModel by lazy {
         ViewModelProvider(
             this,
@@ -74,5 +77,18 @@ class MovieDetailActivity : AppCompatActivity() {
             detailIntent.putExtra(EXTRA_MOVIE, movie)
             context.startActivity(detailIntent)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.menu_sign_out) {
+            FirebaseAuth.getInstance().signOut()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
