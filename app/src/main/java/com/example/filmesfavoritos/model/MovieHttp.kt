@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit
 
 object MovieHttp {
 
-    private const val API_KEY =
-        "e8874a18"
+    private const val API_KEY = "Your Key"
+
     private const val MOVIE_JSON_URL =
         "https://www.omdbapi.com/?s=%s&apikey=$API_KEY"
     private const val MOVIEBYTITLE_JSON_URL =
